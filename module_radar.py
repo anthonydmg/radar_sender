@@ -182,7 +182,7 @@ class ModuleDistanceDetector:
         num_dist = len(distances)
         mean_distance = 0
         if num_dist > 0:
-            mean_distance = sum(distances) / len(num_dist)
+            mean_distance = sum(distances) / num_dist
         return mean_distance
 
     def read_peaks(self, dist_count):
