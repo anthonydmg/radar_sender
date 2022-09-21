@@ -135,7 +135,7 @@ class ModuleDistanceDetector:
         # Clear any errors and status
         self.com.register_write(0x3, 4)
         # Read product ID
-        product_identification =  com.register_read(0x10)
+        product_identification =  self.com.register_read(0x10)
         print(f'product_identification=0x{product_identification:08X}')
 
         version = self.com.buffer_read(0)
