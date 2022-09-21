@@ -22,9 +22,9 @@ sio.connect('http://127.0.0.1:5055')
 distanceDetector = ModuleDistanceDetector()
 distanceDetector.start()
 
-for i in range(20):
+for i in range(100):
     distance = distanceDetector.read()
-    time.sleep(0.2)
+    time.sleep(0.3)
     print("Distance: ",distance)
     sio.emit('radarDistance', {"distance": distance})
 
