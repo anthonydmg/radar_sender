@@ -192,5 +192,5 @@ class ModuleDistanceDetector:
             dist_amplitude = self.com.register_read(0xB2 + 2 * count)
             print(f' dist_{count}_distance={dist_distance / 1000} m', end='')
             print(f' dist_{count}_amplitude={dist_amplitude}', end='')
-            distances.append(dist_distance)
+            distances.append(dist_distance / 1000)
         return distances

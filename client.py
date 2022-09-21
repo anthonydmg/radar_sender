@@ -3,6 +3,7 @@ from module_radar import ModuleDistanceDetector
 import time
 
 sio = socketio.Client()
+distanceDetector = ModuleDistanceDetector()
 
 @sio.event
 def connect():
@@ -15,11 +16,13 @@ def connect_error(data):
 @sio.event
 def disconnect():
     print("I'm disconnected!")
+    distanceDetector.close()
+    distanceDetector = None
 
 sio.connect('http://127.0.0.1:5055')
 
 
-distanceDetector = ModuleDistanceDetector()
+#distanceDetector = ModuleDistanceDetector()
 distanceDetector.start()
 
 for i in range(100):
