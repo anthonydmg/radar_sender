@@ -162,10 +162,10 @@ class ModuleDistanceDetector:
         print('Sensor activated')
 
         # Read out distance start
-        dist_start = com.register_read(0x81)
+        dist_start = self.com.register_read(0x81)
         print(f'dist_start={dist_start / 1000} m')
 
-        dist_length = com.register_read(0x82)
+        dist_length = self.com.register_read(0x82)
         print(f'dist_length={dist_length / 1000} m')
         duration = 100
         start = time.monotonic()
@@ -184,7 +184,7 @@ class ModuleDistanceDetector:
         if num_dist > 0:
             mean_distance = sum(distances) / len(num_dist)
         return mean_distance
-        
+
     def read_peaks(self, dist_count):
         distances = []
         for count in range(dist_count):
