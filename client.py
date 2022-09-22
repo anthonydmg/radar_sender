@@ -16,8 +16,8 @@ def connect_error(data):
 @sio.event
 def disconnect():
     print("I'm disconnected!")
-    distanceDetector.close()
-    distanceDetector = None
+    #distanceDetector.close()
+    #distanceDetector = None
 
 sio.connect('http://127.0.0.1:5055')
 
@@ -28,7 +28,7 @@ distanceDetector.start()
 for i in range(100):
     distance = distanceDetector.read()
     time.sleep(0.3)
-    print("Distance: ",distance)
+    print("\nDistance: ",distance)
     sio.emit('radarDistance', {"distance": distance})
 
 distanceDetector.close()
