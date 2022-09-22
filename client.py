@@ -25,7 +25,7 @@ sio.connect('http://127.0.0.1:5055')
 
 distanceDetector.start()
 start = time.monotonic()
-duration = 120 # Seconds
+duration = 240 # Seconds
 
 while time.monotonic() - start < duration:
     distance = distanceDetector.read()
