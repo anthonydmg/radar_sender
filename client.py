@@ -22,14 +22,22 @@ def disconnect():
 sio.connect('http://127.0.0.1:5055')
 
 
-#distanceDetector = ModuleDistanceDetector()
-distanceDetector.start()
 
-for i in range(100):
+distanceDetector.start()
+start = time.monotonic()
+duration = 120 # Seconds
+
+while time.monotonic() - start < duration:
     distance = distanceDetector.read()
     time.sleep(0.3)
     print("\nDistance: ",distance)
     sio.emit('radarDistance', {"distance": distance})
+
+#for i in range(100):
+#    distance = distanceDetector.read()
+#    time.sleep(0.3)
+#    print("\nDistance: ",distance)
+#    sio.emit('radarDistance', {"distance": distance})
 
 distanceDetector.close()
 sio.disconnect()
