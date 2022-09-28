@@ -145,7 +145,7 @@ class ModuleDistanceDetector:
         self.com.register_write(0x2, 0x200)
         
         # Update rate 1Hz
-        self.com.register_write(0x23, 200)
+        self.com.register_write(0x23, 500)
         
         # Disable UART streaming mode
         self.com.register_write(5, 0)
@@ -173,7 +173,7 @@ class ModuleDistanceDetector:
     def read(self):
         self.com.register_write(3, 4)
         # Wait for data read
-        self.com.wait_for_data(2)
+        self.com.wait_for_data(4)
         dist_count = self.com.register_read(0xB0)
         print('                                               ', end='\r')
         print(f'Detected {dist_count} peaks:', end='')
